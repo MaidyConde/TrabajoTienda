@@ -1,5 +1,9 @@
 package com.tienda.tienda.interfaces;
 
-public interface Iproductos {
+import org.springframework.data.repository.CrudRepository;
+
+import com.tienda.tienda.models.Productos;
+
+public interface Iproductos extends CrudRepository< Productos, String> {
 
 }

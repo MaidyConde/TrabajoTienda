@@ -23,6 +23,31 @@ public class productosController {
 
     @PostMapping("/")
     public ResponseEntity<Object> save (@ModelAttribute("Productos") Productos Productos) {
+
+        if (Productos.getNombreProducto().equals("")) {
+            
+          return new ResponseEntity<>("El campo nombre del producto es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+
+        if (Productos.getDescripcion().equals("")) {
+            
+            return new ResponseEntity<>("El campo descripcion es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+
+        if (Productos.getPrecio().equals("")) {
+            
+            return new ResponseEntity<>("El campo precio es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+
+        if (Productos.getCantidad().equals("")) {
+            
+            return new ResponseEntity<>("El campo cantidad es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+
+        if (Productos.getEstado().equals("")) {
+            
+            return new ResponseEntity<>("El campo estado es obligatorio", HttpStatus.BAD_REQUEST);
+        }
         
         productosService.save(Productos);
         return new ResponseEntity<>(Productos, HttpStatus.OK);
@@ -34,6 +59,18 @@ public class productosController {
         return new ResponseEntity<>(listaProductos, HttpStatus.OK);
     }
 
+    @GetMapping("/busquedafiltro/{filtro}")
+    public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
+        var listaProductos = productosService.filtroProductos(filtro);
+        return new ResponseEntity<>(listaProductos, HttpStatus.OK); 
+    }
+
+    @GetMapping("/busquedafiltroestado/{estado}")
+    public ResponseEntity<Object> findEstado(@PathVariable char estado) {
+        var listaProductos = productosService.filtroProductosEstado(estado);
+        return new ResponseEntity<>(listaProductos, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var Productos = productosService.findOne(id);
@@ -42,8 +79,20 @@ public class productosController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable String id) {
-    productosService.delete(id);
-    return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
+        var Productos = productosService.findOne(id).get();
+        if (Productos != null) {
+            if (Productos.getEstado().equals("A")) {
+
+                Productos.setEstado("I");
+                productosService.save(Productos);
+                return new ResponseEntity<>("inactivo correctamente", HttpStatus.OK);
+            } else
+            Productos.setEstado("A");
+                productosService.save(Productos);
+            return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")

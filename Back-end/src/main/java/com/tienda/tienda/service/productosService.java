@@ -23,6 +23,18 @@ public class productosService implements IproductosService {
         return Productos.getIdProductos();
     }
 
+     @Override
+    public List<Productos> filtroProductos(String filtro) {
+        List<Productos> listaProductos =data.filtroProductos(filtro);
+        return listaProductos;
+    }
+
+    @Override
+    public List<Productos> filtroProductosEstado(char estado) {
+        List<Productos> listaProductos =data.filtroProductosEstado(estado);
+        return listaProductos;
+    }
+
     @Override
     public List<Productos> findAll() {
         List<Productos> listaProductos = (List<Productos>) data.findAll();

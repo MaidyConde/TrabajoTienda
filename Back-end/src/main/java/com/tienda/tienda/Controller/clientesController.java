@@ -25,7 +25,44 @@ public class clientesController {
 
     @PostMapping("/")
     public ResponseEntity<Object> save (@ModelAttribute("Clientes") Clientes Clientes) {
-        
+         // verificar que no exista el documento de identidad
+        var listaClientes = clientesService.findAll()
+                .stream().filter(clientes -> clientes.getIdentificacion()
+                 .equals(Clientes.getIdentificacion()));
+        if (listaClientes.count() != 0) {
+     return new ResponseEntity<>("El cliente ya existe", HttpStatus.BAD_REQUEST); 
+    }
+
+    if (Clientes.getIdentificacion().equals("")) {
+            
+        return new ResponseEntity<>("El campo identificacion es obligatorio", HttpStatus.BAD_REQUEST);
+    }
+
+    if (Clientes.getNombreCliente().equals("")) {
+            
+        return new ResponseEntity<>("El campo nombre es obligatorio", HttpStatus.BAD_REQUEST);
+    }
+
+    if (Clientes.getApellidoCliente().equals("")) {
+            
+        return new ResponseEntity<>("El campo apellido es obligatorio", HttpStatus.BAD_REQUEST); 
+    }
+
+    if (Clientes.getTelefono().equals("")) {
+            
+        return new ResponseEntity<>("El campo telefono es obligatorio", HttpStatus.BAD_REQUEST); 
+    }
+
+    if (Clientes.getDireccion().equals("")) {
+            
+        return new ResponseEntity<>("El campo direccion es obligatorio", HttpStatus.BAD_REQUEST); 
+    }
+
+    if (Clientes.getEstado().equals("")) {
+            
+        return new ResponseEntity<>("El campo estado es obligatorio", HttpStatus.BAD_REQUEST); 
+    }
+
         clientesService.save(Clientes);
         return new ResponseEntity<>(Clientes, HttpStatus.OK);
     }
@@ -33,6 +70,24 @@ public class clientesController {
     @GetMapping("/")
     public ResponseEntity<Object> findAll() {
         var listaClientes = clientesService.findAll();
+        return new ResponseEntity<>(listaClientes, HttpStatus.OK);
+    }
+
+    @GetMapping("/busquedafiltro/{filtro}")
+    public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
+        var listaClientes = clientesService.filtroClientes(filtro);
+        return new ResponseEntity<>(listaClientes, HttpStatus.OK); 
+    }
+
+    @GetMapping("/busquedafiltroestado/{estado}")
+    public ResponseEntity<Object> findEstado(@PathVariable char estado) {
+        var listaClientes = clientesService.filtroClientesEstado(estado);
+        return new ResponseEntity<>(listaClientes, HttpStatus.OK);
+    }
+
+    @GetMapping("/busquedafiltrociudad/{ciudad}")
+    public ResponseEntity<Object> findCiudad(@PathVariable String ciudad) {
+        var listaClientes = clientesService.filtroClientesCiudad(ciudad);
         return new ResponseEntity<>(listaClientes, HttpStatus.OK);
     }
 
@@ -44,8 +99,20 @@ public class clientesController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable String id) {
-    clientesService.delete(id);
-    return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
+        var Clientes = clientesService.findOne(id).get();
+        if (Clientes != null) {
+            if (Clientes.getEstado().equals("A")) {
+
+                Clientes.setEstado("I");
+                clientesService.save(Clientes);
+                return new ResponseEntity<>("inactivo correctamente", HttpStatus.OK);
+            } else
+                Clientes.setEstado("A");
+                clientesService.save(Clientes);
+            return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")

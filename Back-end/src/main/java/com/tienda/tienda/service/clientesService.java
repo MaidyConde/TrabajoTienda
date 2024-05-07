@@ -23,6 +23,24 @@ public class clientesService implements IclientesService {
     }
 
     @Override
+    public List<Clientes> filtroClientes(String filtro) {
+        List<Clientes> listaClientes =data.filtroClientes(filtro);
+        return listaClientes;
+    }
+
+    @Override
+    public List<Clientes> filtroClientesEstado(char estado) {
+        List<Clientes> listaClientes =data.filtroClientesEstado(estado);
+        return listaClientes;
+    }
+    
+    @Override
+    public List<Clientes> filtroClientesCiudad(String ciudad) {
+        List<Clientes> listaClientes =data.filtroClientesCiudad(ciudad);
+        return listaClientes;
+    } 
+
+    @Override
     public List<Clientes> findAll() {
         List<Clientes> listaClientes = (List<Clientes>) data.findAll();
         return listaClientes;

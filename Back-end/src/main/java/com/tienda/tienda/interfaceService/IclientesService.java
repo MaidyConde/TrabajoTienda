@@ -10,6 +10,12 @@ public interface IclientesService {
 
     public List<Clientes> findAll();
 
+    public List<Clientes> filtroClientes(String filtro);
+
+    public List<Clientes> filtroClientesEstado(char estado); 
+
+    public List<Clientes> filtroClientesCiudad(String ciudad);
+
     public Optional<Clientes> findOne(String id);
 
     public int delete(String id);

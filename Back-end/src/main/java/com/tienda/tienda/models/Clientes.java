@@ -13,7 +13,7 @@ public class Clientes {
     @Column(name = "idClientes", nullable = false, length = 36)
     private String idClientes;
 
-    @Column(name = "tipoIdentificacion", nullable = false, length = 2)
+    @Column(name = "tipoIdentificacion", nullable = false, length = 3)
     private String tipoIdentificacion;
 
     @Column(name = "Identificacion", nullable = false, length = 10)

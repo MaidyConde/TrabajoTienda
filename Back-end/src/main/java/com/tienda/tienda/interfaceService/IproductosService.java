@@ -10,6 +10,10 @@ public interface IproductosService {
 
     public List<Productos> findAll();
 
+    public List<Productos> filtroProductos(String filtro);
+
+    public List<Productos> filtroProductosEstado(char estado); 
+
     public Optional<Productos> findOne(String id);
 
     public int delete(String id);

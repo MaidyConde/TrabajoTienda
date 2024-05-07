@@ -58,5 +58,4 @@ public class clientesService implements IclientesService {
         data.deleteById(id);
         return 1;
     }
-
 }

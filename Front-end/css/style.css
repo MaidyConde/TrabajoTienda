@@ -31,3 +31,22 @@ body {
     margin-left: 250px;
     padding: 20px;
 }
+
+header {
+    background-color: #333; /* Cambia el color de fondo según tus preferencias */
+    padding: 5px; /* Ajusta el espaciado interno según tus necesidades */
+    text-align: left; /* Centra el contenido del header horizontalmente */
+}
+
+/* Estilos para el logo */
+header img {
+    max-width: 80px; /* Establece el ancho máximo del logo */
+    height: auto; /* Esto permite que la altura se ajuste automáticamente */
+    
+}
+
+.h1{
+    padding: auto;
+
+}
+

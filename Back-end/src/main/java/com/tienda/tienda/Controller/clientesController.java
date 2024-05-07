@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tienda.tienda.interfaceService.IclientesService;
 import com.tienda.tienda.models.Clientes;
 
-
 @RequestMapping("/api/v1/Clientes/")
 @RestController
 public class clientesController {

@@ -115,6 +115,4 @@ public class productosController {
             return new ResponseEntity<>("Error producto NO Encontrado", HttpStatus.BAD_REQUEST);
         }
     }
-
-
 }

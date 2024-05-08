@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inicio</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoe Store</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Si tienes un archivo de estilos externo -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Estilos CSS para la barra lateral */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 200px; /* Ancho de la barra lateral */
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgb(51, 47, 47); /* Color de fondo de la barra lateral */
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #555; /* Cambia el color de fondo al pasar el ratón */
+    }
+
+    .sidebar .title {
+      text-align: center;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    /* Estilos para el icono */
+    .sidebar i {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
 
-  
-<div class="sidenav">
-  <header>
-    <h1>Shoes Store</h1>
-    <img src="./img/logo.webp" alt="Logo">
-  </header>
-
-  <a href="/Front-end/RegistroProductos.html">Productos</a>
-  <a href="/Front-end/RegistroClientes.html">Clientes</a>
+<div class="sidebar">
+  <div class="title">
+    <i class="fa-solid fa-shop"></i></i><!-- Icono de zapatos -->
+    Shoes Store
+  </div>
+  <a href="#"><i class="fas fa-bars" style="color: white;"></i> Productos</a>
+  <a href="#"><i class="fas fa-users"></i> Clientes</a>
+  <a href="#"><i class="fas fa-shopping-bag"></i> Productos</a>
+  <a href="#"><i class="fas fa-wallet"></i> Ventas</a>
 </div>
 
-<div class="content">
-  <h2>CRUDDDDD</h2>
-</div>
+<!-- Agrega FontAwesome para usar los iconos -->
 
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>

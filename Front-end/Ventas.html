@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+</head>
+<body>
+
+    <style>
+         .table {
+        margin-left: 220px; /* Para que no se solape con la barra lateral */
+        width: calc(100% - 220px); /* Resta del ancho total menos el ancho de la barra lateral */
+        border-collapse: collapse;
+    }
+    .table th, .table td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+    .table th {
+        background-color: rgb(151, 161, 168);
+        color: white;
+    }
+    .colorTabla {
+        background-color: rgb(51, 47, 47);
+        color: white;
+    }
+    </style>
+    <table class="table">
+        <tr class="colorTabla">
+            <th>Id Venta</th>
+            <th>Id Cliente</th>
+            <th>Total</th>
+            <th>Fecha de venta</th>
+            <th>Estado</th>
+            <th>Acciones</th> 
+        </tr>
+        <!-- Aquí puedes agregar más filas según sea necesario -->
+    </table>
+</body>
+</html>

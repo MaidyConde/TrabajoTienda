@@ -18,6 +18,6 @@ public interface IventasService {
 
     public Optional<Ventas> findOne(String id);
 
-    public int delete(String id);
+    public int deleteForever(String id);
 
 }

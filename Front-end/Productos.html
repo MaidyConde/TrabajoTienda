@@ -1,45 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/Front-end/img/tacon123.jpeg">
     <title>Productos</title>
-</head>
-<body>
-
+    <link rel="stylesheet" href="/Front-end/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-         .table {
-        margin-left: 220px; /* Para que no se solape con la barra lateral */
-        width: calc(100% - 220px); /* Resta del ancho total menos el ancho de la barra lateral */
-        border-collapse: collapse;
-    }
-    .table th, .table td {
-        border: 1px solid #dddddd;
-        padding: 8px;
-        text-align: left;
-    }
-    .table th {
-        background-color: rgb(151, 161, 168);
-        color: white;
-    }
-    .colorTabla {
-        background-color: rgb(51, 47, 47);
-        color: white;
-    }
+        /* Agregamos un estilo personalizado para ocultar el formulario por defecto */
+        #registroProductoForm {
+            display: none;
+        }
     </style>
-    <table class="table">
-        <tr class="colorTabla">
-            <th>Id Producto</th>
-            <th>Nombre Producto</th>
-            <th>Descripcion</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>% Iva</th>
-            <th>% Descuento</th>
-            <th>Estado</th>
-            <th>Acciones</th> 
-        </tr>
-        <!-- Aquí puedes agregar más filas según sea necesario -->
-    </table>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menú en el lado izquierdo -->
+        <div class="menu">
+            <img src="/Front-end/img/tacon123.jpeg" alt="" width="70%" style="border-radius: 70%;">
+            <ul class="color-blanco">
+                <a href="/Front-end/Inicio.html"><i class="fas fa-bars"></i> Productos</a>
+                <a href="/Front-end/Cliente.html"><i class="fas fa-users"></i> Clientes</a>
+                <a href="/Front-end/Productos.html"><i class="fas fa-shopping-bag"></i> Productos</a>
+                <a href="/Front-end/Ventas.html"><i class="fas fa-wallet"></i> Ventas</a>
+            </ul>
+        </div>
+
+        <!-- Contenido en el lado derecho -->
+        <div class="content">
+            <div class="table-container">
+                <h1>Productos</h1>
+                <!-- Contenedor de filtros -->
+                <div class="filter-container">
+                    <!-- Filtro por nombre -->
+                    <div class="col-6">
+                        <label for="filtroNombre" class="form-label">Filtrar por nombre:</label>
+                        <input type="text" class="form-control" id="filtroNombre" placeholder="Nombre">
+                    </div>
+                    <!-- Filtro por estado -->
+                    <div class="col-6">
+                        <label for="filtroEstado" class="form-label">Filtrar por estado:</label>
+                        <input type="text" class="form-control" id="filtroEstado" placeholder="Estado">
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="text-end mb-3">
+                    <button type="button" class="btn btn-primary me-2">Aplicar filtros</button>
+                    <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
+                    <!-- Agregamos un evento onclick para mostrar el formulario al hacer clic -->
+                    <button type="button" class="btn btn-success" onclick="mostrarFormulario()">Registrar
+                        Producto</button>
+                </div>
+
+                <!-- Tabla -->
+                <div class="table-responsive"> <!-- Contenedor de tabla responsivo -->
+                    <table class="table table-striped mx-auto"> <!-- Centrar la tabla horizontalmente -->
+                        <tr>
+                            <th>Id Producto</th>
+                            <th>Nombre Producto</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>% Iva</th>
+                            <th>% Descuento</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                        <tbody id="cuerpoTabla"></tbody>
+                    </table>
+                    <!-- Formulario de registro de producto -->
+                    <form id="registroProductoForm" class="mt-4">
+                        <h2>Registrar Producto</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="inputNombreProducto" class="form-label">Nombre Producto:</label>
+                                    <input type="text" class="form-control" id="inputNombreProducto"
+                                        placeholder="Nombre del Producto">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputDescripcion" class="form-label">Descripción:</label>
+                                    <input type="text" class="form-control" id="inputDescripcion"
+                                        placeholder="Descripción">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputCantidad" class="form-label">Cantidad:</label>
+                                    <input type="number" class="form-control" id="inputCantidad" placeholder="Cantidad">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="inputPrecio" class="form-label">Precio:</label>
+                                    <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputIva" class="form-label">Iva:</label>
+                                    <input type="text" class="form-control" id="inputIva" placeholder="Iva">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputDescuento" class="form-label">Descuento:</label>
+                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputEstado" class="form-label">Estado:</label>
+                                    <select class="form-select" id="inputEstado">
+                                        <option value="activo">Activo</option>
+                                        <option value="inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="ocultarFormulario()">Registrar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Función para mostrar el formulario de registro de producto
+        function mostrarFormulario() {
+            document.getElementById('registroProductoForm').style.display = 'block';
+        }
+        
+        // Función para ocultar el formulario de registro de producto
+        function ocultarFormulario() {
+            document.getElementById('registroProductoForm').style.display = 'none';
+        }
+    </script>
+
+    <script src="/Front-end/js/Productos.js"></script>
 </body>
+
 </html>

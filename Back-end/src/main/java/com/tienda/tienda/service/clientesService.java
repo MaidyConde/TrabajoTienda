@@ -53,8 +53,9 @@ public class clientesService implements IclientesService {
         return Clientes;
     }
 
+    @SuppressWarnings("null")
     @Override
-    public int delete(String id) {
+    public int deleteForever(String id) {
         data.deleteById(id);
         return 1;
     }

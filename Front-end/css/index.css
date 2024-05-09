@@ -1,0 +1,117 @@
+.img-logo{
+    width: 60%;
+    height: 30%;
+}/* Estilo para el menú */
+/* Estilo para el menú */
+/* Estilo para el menú */
+.menu {
+    width: 200px; /* Ancho del menú */
+    background-color: rgb(46, 46, 46); /* Color de fondo del menú */
+    color: white; /* Color del texto del menú */
+    padding-top: 20px; /* Espacio arriba del menú */
+    position: fixed; /* Fija el menú en la posición */
+    top: 0; /* Alinea el menú arriba */
+    left: 0; /* Alinea el menú a la izquierda */
+    bottom: 0; /* Estira el menú hasta el fondo */
+    z-index: 1000; /* Asegura que el menú esté por encima del contenido */
+}
+
+.menu img {
+    display: block; /* Para centrar la imagen */
+    margin: 0 auto; /* Centrar la imagen horizontalmente */
+    border-radius: 50%; /* Hacer la imagen redonda */
+}
+
+.menu ul {
+    list-style: none; /* Eliminar los puntos de lista */
+    padding: 0; /* Eliminar el padding de la lista */
+}
+
+.menu a {
+    display: block;
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    padding: 10px;
+    border-bottom: 1px solid white; /* Línea separadora entre cada elemento */
+    color: white; /* Color del texto del enlace */
+}
+
+.menu a i {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo para el contenido */
+.content {
+    flex: 1; /* El contenido ocupa el espacio restante */
+    padding: 5%;
+    text-align: center; /* Centrar el contenido */
+    margin-left: 15%; /* Ajustar el margen izquierdo para dejar espacio al menú */
+}
+
+/* Estilo para la tabla */
+.table-container {
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+    width: 100%; /* Ancho de la tabla */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+    margin-bottom: 20px; /* Agrega un margen inferior para separar del contenido siguiente */
+}
+
+/* Estilos para los filtros */
+.filter-container div {
+    margin-bottom: 10px; /* Agrega un margen inferior entre los filtros */
+}
+
+/* Estilos para los inputs */
+.filter-container input {
+    width: 100%; /* Ancho completo */
+    padding: 8px; /* Añade un relleno */
+    border: 1px solid #ccc; /* Añade un borde */
+    border-radius: 5px; /* Añade bordes redondeados */
+    transition: border-color 0.3s; /* Transición suave para el cambio de color de borde */
+}
+
+/* Estilos para el texto de los filtros */
+.filter-container {
+    display: flex;
+    flex-direction: row; /* Cambia la dirección a horizontal */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    justify-content: space-between; /* Distribuye los elementos horizontalmente */
+    margin-bottom: 20px; /* Agrega un margen inferior para separar del contenido siguiente */
+}
+
+/* Estilos para los filtros */
+.filter-container div {
+    margin-right: 10px; /* Agrega un margen derecho entre los filtros */
+    font-weight: bold; /* Texto en negrita */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para los inputs */
+.filter-container input {
+    padding: 8px; /* Añade un relleno */
+    border: 1px solid #ccc; /* Añade un borde */
+    border-radius: 5px; /* Añade bordes redondeados */
+    transition: border-color 0.3s; /* Transición suave para el cambio de color de borde */
+}
+
+/* Estilos para los inputs en focus */
+.filter-container input:focus {
+    outline: none; /* Quita el contorno alrededor del input */
+    border-color: #007bff; /* Cambia el color del borde cuando está en foco */
+}
+
+/* Estilos para el placeholder de los inputs */
+.filter-container input::placeholder {
+    color: #999; /* Color del placeholder */
+}

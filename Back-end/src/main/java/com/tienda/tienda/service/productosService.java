@@ -47,9 +47,9 @@ public class productosService implements IproductosService {
         Optional<Productos> Productos = data.findById(id);
         return Productos;
     }
-
+    @SuppressWarnings("null")
     @Override
-    public int delete(String id) {
+    public int deleteForever(String id) {
         data.deleteById(id);
         return 1;
     }

@@ -88,6 +88,14 @@ public class ventasController {
         }
     }
 
+    @DeleteMapping("/eliminarPermanente/{id}")
+    public ResponseEntity<Object> deleteForever(@PathVariable String id) {
+    ventasService.deleteForever(id);
+    return new ResponseEntity<>("Registro eliminado Permanentemente", HttpStatus.OK);
+    }
+
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("Ventas") Ventas VentasUpdate) {
         var Ventas = ventasService.findOne(id).get();

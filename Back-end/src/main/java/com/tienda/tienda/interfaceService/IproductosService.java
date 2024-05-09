@@ -16,6 +16,6 @@ public interface IproductosService {
 
     public Optional<Productos> findOne(String id);
 
-    public int delete(String id);
+    public int deleteForever(String id);
 
 }

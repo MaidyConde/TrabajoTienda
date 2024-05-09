@@ -172,7 +172,7 @@ function buscarProductosPorFiltro(filtro) {
 function buscarProductosPorEstado(estado) {
     if (estado === '') {
         listarProductos(); // Mostrar todos los médicos si estado es vacío
-    } else if (estado === 'A') {
+    } else if (estado === 'A', 'I') {
         // Mostrar solo los médicos habilitados si estado es 'H'
         $.ajax({
             url: "http://localhost:8080/api/v1/Productos/busquedafiltroestado/" + estado,
@@ -186,12 +186,12 @@ function buscarProductosPorEstado(estado) {
                     trRegistro.innerHTML = `
                         <td>${result[i]["idProductos"]}</td>
                         <td class="text-center align-middle">${result[i]["nombreProducto"]}</td>
-                        <td class="text-center align-middle">${result[i]["Descripcion"]}</td>
-                        <td class="text-center align-middle">${result[i]["Cantidad"]}</td>
-                        <td class="text-center align-middle">${result[i]["Precio"]}</td>
-                        <td class="text-center align-middle">${result[i]["Iva"]}</td>
-                        <td class="text-center align-middle">${result[i]["Descuento"]}</td>
-                        <td class="text-center align-middle">${result[i]["Estado"]}</td>
+                        <td class="text-center align-middle">${result[i]["descripcion"]}</td>
+                        <td class="text-center align-middle">${result[i]["cantidad"]}</td>
+                        <td class="text-center align-middle">${result[i]["precio"]}</td>
+                        <td class="text-center align-middle">${result[i]["iva"]}</td>
+                        <td class="text-center align-middle">${result[i]["descuento"]}</td>
+                        <td class="text-center align-middle">${result[i]["estado"]}</td>
                         <td class="text-center align-middle">
                             <i class="fas fa-edit editar"  onclick="registrarProductosBandera=false;" data-id="${result[i]["idProductos"]}"></i>
                             <i class="fas fa-user-slash cambiarEstado" onclick="cambiarEstado(${result[i]["idProductos"]})" data-id="${result[i]["idProductos"]}"></i>

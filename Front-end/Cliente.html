@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body>
+<body onload="listarCliente()">
     <div class="container">
         <div class="menu">
             <img src="/Front-end/img/tacon123.jpeg" alt="" width="70%" style="border-radius: 70%;">
@@ -56,10 +56,10 @@
                         <input type="text" class="form-control" id="filtroEstado" placeholder="Estado">
                     </div>
                 </div>
-
+                
                 <!-- Botones -->
                 <div class="text-end mb-3">
-                    <button type="button" class="btn btn-primary me-2">Aplicar filtros</button>
+                    <button class="btn btn-primary mt-2" onclick="AplicarFiltros(document.getElementById('filtroEstado').value)">Aplicar Filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
                     <!-- Agregamos un evento onclick para mostrar el formulario al hacer clic -->
                     <button type="button" class="btn btn-success" onclick="mostrarFormulario()">Registrar Cliente</button>

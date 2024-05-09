@@ -134,7 +134,7 @@ function registrarCliente() {
 };
 
 
-function buscarClientePorFiltro(filtro) {
+function AplicarFiltros(filtro) {
     if (filtro=== '') {
         listarCliente(); // Mostrar todos los médicos si estado es vacío
     }else{
@@ -174,11 +174,11 @@ function buscarClientePorFiltro(filtro) {
     
 }
 
-function buscarClientePorEstado(estado) {
+function AplicarFiltros(estado) {
     if (estado === '') {
         listarCliente(); // Mostrar todos los médicos si estado es vacío
-    } else if (estado === 'A') {
-        // Mostrar solo los médicos habilitados si estado es 'H'
+    } else if (estado === 'A','I') {
+        // Mostrar solo los médicos habilitados si estado es 'A'
         $.ajax({
             url: "http://localhost:8080/api/v1/Clientes/busquedafiltroestado/" + estado,
             type: "GET",
@@ -191,13 +191,13 @@ function buscarClientePorEstado(estado) {
                     trRegistro.innerHTML = `
                         <td>${result[i]["idClientes"]}</td>
                         <td class="text-center align-middle">${result[i]["tipoIdentificacion"]}</td>
-                        <td class="text-center align-middle">${result[i]["Identificacion"]}</td>
+                        <td class="text-center align-middle">${result[i]["identificacion"]}</td>
                         <td class="text-center align-middle">${result[i]["nombreCliente"]}</td>
                         <td class="text-center align-middle">${result[i]["apellidoCliente"]}</td>
-                        <td class="text-center align-middle">${result[i]["Telefono"]}</td>
-                        <td class="text-center align-middle">${result[i]["Direccion"]}</td>
-                        <td class="text-center align-middle">${result[i]["Ciudad"]}</td>
-                        <td class="text-center align-middle">${result[i]["Estado"]}</td>
+                        <td class="text-center align-middle">${result[i]["telefono"]}</td>
+                        <td class="text-center align-middle">${result[i]["direccion"]}</td>
+                        <td class="text-center align-middle">${result[i]["ciudad"]}</td>
+                        <td class="text-center align-middle">${result[i]["estado"]}</td>
                         <td class="text-center align-middle">
                             <i class="fas fa-edit editar"  onclick="registrarClienteBandera=false;" data-id="${result[i]["idClientes"]}"></i>
                             <i class="fas fa-user-slash cambiarEstado" onclick="cambiarEstado(${result[i]["idClientes"]})" data-id="${result[i]["idClientes"]}"></i>

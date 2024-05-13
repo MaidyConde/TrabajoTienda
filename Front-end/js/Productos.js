@@ -330,7 +330,7 @@ function buscarProductosPorFiltro(filtro) {
     
 }
 
-function buscarProductosPorEstado(estado) {
+function AplicarFiltros(estado) {
     if (estado === '') {
         listarProductos(); // Mostrar todos los médicos si estado es vacío
     } else if (estado === 'A', 'I') {

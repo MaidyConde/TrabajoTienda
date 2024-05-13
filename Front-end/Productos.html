@@ -50,13 +50,13 @@
                     <!-- Filtro por estado -->
                     <div class="col-6">
                         <label for="filtroEstado" class="form-label">Filtrar por estado:</label>
-                        <input type="text" class="form-control" id="filtroEstado" placeholder="Estado">
+                        <input type="text" class="form-control" id="filtroEstado" placeholder=" 'A' de activo 'I' de inactivo">
                     </div>
                 </div>
 
                 <!-- Botones -->
                 <div class="text-end mb-3">
-                    <button type="button" class="btn btn-primary me-2">Aplicar filtros</button>
+                    <button class="btn btn-primary mt-2" onclick="AplicarFiltros(document.getElementById('filtroEstado').value)">Aplicar Filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
                     <!-- Agregamos un evento onclick para mostrar el formulario al hacer clic -->
                     <button onclick="registrarProductosBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Producto</button>

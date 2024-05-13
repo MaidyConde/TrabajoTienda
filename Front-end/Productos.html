@@ -51,7 +51,6 @@
                     <div class="col-6">
                         <label for="filtroEstado" class="form-label">Filtrar por estado:</label>
                         <input type="text" class="form-control" id="filtroEstado" placeholder="Estado">
-                        <button class="btn btn-primary mt-2" onclick="buscarProductosPorEstado(document.getElementById('filtroEstado').value)">Buscar</button>
                     </div>
                 </div>
 
@@ -60,8 +59,7 @@
                     <button type="button" class="btn btn-primary me-2">Aplicar filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
                     <!-- Agregamos un evento onclick para mostrar el formulario al hacer clic -->
-                    <button type="button" class="btn btn-success" onclick="mostrarFormulario()">Registrar
-                        Producto</button>
+                    <button onclick="registrarProductosBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Producto</button>
                 </div>
 
                 <!-- Tabla -->
@@ -81,68 +79,81 @@
                         <tbody id="cuerpoTabla"></tbody>
                     </table>
                     <!-- Formulario de registro de producto -->
-                    <form id="registroProductoForm" class="mt-4">
-                        <h2>Registrar Producto</h2>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="inputNombreProducto" class="form-label">Nombre Producto:</label>
-                                    <input type="text" class="form-control" id="inputNombreProducto"
-                                        placeholder="Nombre del Producto">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputDescripcion" class="form-label">Descripción:</label>
-                                    <input type="text" class="form-control" id="inputDescripcion"
-                                        placeholder="Descripción">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputCantidad" class="form-label">Cantidad:</label>
-                                    <input type="number" class="form-control" id="inputCantidad" placeholder="Cantidad">
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Registro Productos</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container mt-3">
+                                    <form id="miFormulario" class="         ">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="nombreProducto">Nombre Producto:</label>
+                                                <input class="form-select form-control" id="nombreProducto"
+                                                 name="nombreProducto" onfocusout="validarnombreproducto(this)"
+                                                required>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Descripcion">Descripción:</label>
+                                                <input type="text" class="form-control" id="Descripcion"
+                                                    name="Descripcion"
+                                                    onfocusout="validardescripcion(this)" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Cantidad">Cantidad:</label>
+                                                <input type="number" class="form-control" id="Cantidad"
+                                                    name="Cantidad" onfocusout="validarcantidad(this)" required>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Precio">Precio:</label>
+                                                <input type="number" class="form-control" id="Precio"
+                                                    name="Precio" onfocusout="validarprecio(this)"
+                                                    required>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Iva">Iva:</label>
+                                                <input type="number" class="form-control" id="Iva" name="Iva"
+                                                    onfocusout="validariva(this)" required>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Descuento">Descuento:</label>
+                                                <input type="text" class="form-control" id="Descuento" name="Descuento"
+                                                    onfocusout="validardescuento(this)" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                                <label for="Estado">Estado:</label>
+                                                <select class="form-select " id="Estado" name="estado"
+                                                    onfocusout="validarestado(this)" required>
+                                                    <option value="" selected>Seleccionar...</option>
+                                                    <option  value="A">Activo</option>
+                                                    <option  value="I">Inactivo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                onclick="registrarProductos(); limpiar();">Agregar Producto</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="inputPrecio" class="form-label">Precio:</label>
-                                    <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputIva" class="form-label">Iva:</label>
-                                    <input type="text" class="form-control" id="inputIva" placeholder="Iva">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputDescuento" class="form-label">Descuento:</label>
-                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputEstado" class="form-label">Estado:</label>
-                                    <select class="form-select" id="inputEstado">
-                                        <option value="activo">Activo</option>
-                                        <option value="inactivo">Inactivo</option>
-                                    </select>
-                                </div>
-                            </div>
+                           
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="ocultarFormulario()">Registrar</button>
-                    </form>
-
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script>
-        // Función para mostrar el formulario de registro de producto
-        function mostrarFormulario() {
-            document.getElementById('registroProductoForm').style.display = 'block';
-        }
-        
-        // Función para ocultar el formulario de registro de producto
-        function ocultarFormulario() {
-            document.getElementById('registroProductoForm').style.display = 'none';
-        }
-    </script>
-
     <script src="/Front-end/js/Productos.js"></script>
 </body>
 

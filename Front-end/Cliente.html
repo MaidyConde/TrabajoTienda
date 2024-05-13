@@ -59,10 +59,10 @@
                 
                 <!-- Botones -->
                 <div class="text-end mb-3">
-                    <button class="btn btn-primary mt-2" onclick="AplicarFiltros(document.getElementById('filtroEstado').value)">Aplicar Filtros</button>
+                    <button class="btn btn-primary mt-2" onclick="AplicarFiltros(document.getElementById('filtroEstado') ('filtroCiudad').value)">Aplicar Filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
                     <!-- Agregamos un evento onclick para mostrar el formulario al hacer clic -->
-                    <button type="button" class="btn btn-success" onclick="mostrarFormulario()">Registrar Cliente</button>
+                    <button onclick="RegistrarClienteBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Cliente</button>
                 </div>
 
                 <!-- Tabla -->
@@ -81,67 +81,95 @@
                     </tr>
                     <tbody id="cuerpoTabla"></tbody>
                 </table>
-<!-- Formulario de registro de cliente -->
-<form id="registroClienteForm" class="mt-4">
-    <h2>Registrar Cliente</h2>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-2">
-                <label for="inputEstado" class="form-label">Tipo Documento:</label>
-                <select class="form-select" id="inputIdentificacion">
-                    <option value="tarjeta">TI</option>
-                    <option value="cedula">CC</option>
-                    <option value="extranjera">CE</option>
-                </select>
-            </div>
-            <div class="mb-2">
-                <label for="inputNombre" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="inputNombre" placeholder="Digite el nombre">
-            </div>
-            <div class="mb-2">
-                <label for="inputTelefono" class="form-label">Teléfono:</label>
-                <input type="text" class="form-control" id="inputTelefono" placeholder="Teléfono">
-            </div>
-            <div class="mb-2">
-                <label for="inputCiudad" class="form-label">Ciudad:</label>
-                <input type="text" class="form-control" id="inputCiudad" placeholder="Ciudad">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="mb-2">
-                <label for="inputNombre" class="form-label">N° Identificación:</label>
-                <input type="text" class="form-control" id="inputTipoIdentificacion" placeholder="Digite el nombre">
-            </div>
-            <div class="mb-2">
-                <label for="inputApellido" class="form-label">Apellido:</label>
-                <input type="text" class="form-control" id="inputApellido" placeholder="Digite el apellido">
-            </div>
-            <div class="mb-2">
-                <label for="inputDireccion" class="form-label">Dirección:</label>
-                <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
-            </div>
-            <div class="mb-2">
-                <label for="inputEstado" class="form-label">Estado:</label>
-                <select class="form-select" id="inputEstado">
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <button type="button" class="btn btn-primary" onclick="registrarCliente()">Registrar</button>
-</form>
 
-        </div>
-    </div>
-
-    <script>
-        // Función para mostrar el formulario de registro de cliente
-        function mostrarFormulario() {
-            document.getElementById('registroClienteForm').style.display = 'block';
-        }
-    </script>
-
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Registro Cliente</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container mt-3">
+                                    <form id="miFormulario" class="         ">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="tipoIdentificacion">Tipo de documento:</label>
+                                                <select class="form-select form-control" id="tipoIdentificacion" name="tipoIdentificacion" onfocusout="validartipoidentificacion(this)"
+                                                    required>
+                                                    <option value="">Seleccionar...</option>
+                                                    <option value="TI">Tarjeta de identidad</option>
+                                                    <option value="CC">Cédula de Ciudadanía</option>
+                                                    <option value="CE">Cédula Extranjera</option>
+                                                </select>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Identificacion">Número de documento:</label>
+                                                <input type="number" class="form-control" id="Identificacion"
+                                                    name="Identificacion"
+                                                    onfocusout="validaridentificacion(this)" required>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="nombrecliente">Nombre Cliente:</label>
+                                                <input type="text" class="form-control" id="nombreCliente"
+                                                    name="nombreCliente" onfocusout="validarnombrecliente(this)" required>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="apellidoCliente">Apellido Cliente:</label>
+                                                <input type="text" class="form-control" id="apellidoCliente"
+                                                    name="apellidoCliente" onfocusout="validarapellidocliente(this)"
+                                                    required>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Telefono">Teléfono:</label>
+                                                <input type="tel" class="form-control" id="Telefono" name="telefono"
+                                                    onfocusout="validartelefono(this)" required>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Direccion">Dirección:</label>
+                                                <input type="text" class="form-control" id="Direccion" name="direccion"
+                                                    onfocusout="validardireccion(this)" required>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Ciudad">Ciudad:</label>
+                                                <input type="text" class="form-control" id="Ciudad" name="ciudad"
+                                                    onfocusout="validarciudad(this)" required>
+                                            </div>
+    
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Estado">Estado:</label>
+                                                <select class="form-select " id="Estado" name="estado"
+                                                    onfocusout="validarestado(this)" required>
+                                                    <option value="" selected>Seleccionar...</option>
+                                                    <option  value="A">Activo</option>
+                                                    <option  value="I">Inactivo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary"
+                                    onclick="RegistrarCliente(); limpiar();">Agregar Cliente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     <script src="/Front-end/js/Clientes.js"></script>
 </body>
 

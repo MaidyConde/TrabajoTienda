@@ -49,13 +49,13 @@ function registrarProductos() {
     var Estado = document.getElementById("Estado");
 
     // Verificar si algún campo obligatorio está vacío
-    if (!validarNombreProducto(nombreProducto) ||
-        !validarDescripcion(Descripcion) ||
-        !validarCantidad(Cantidad) ||
-        !validarPrecio(Precio) ||
-        !validarIva(Iva) ||
-        !validarDescuento(Descuento) ||
-        !validarEstado(Estado)) {
+    if (!validarnombreproducto(nombreProducto) ||
+        !validardescripcion(Descripcion) ||
+        !validarcantidad(Cantidad) ||
+        !validarprecio(Precio) ||
+        !validariva(Iva) ||
+        !validardescuento(Descuento) ||
+        !validarestado(Estado)) {
         // Mostrar una alerta indicando que todos los campos son obligatorios
         Swal.fire({
             title: "¡Error!",
@@ -88,7 +88,7 @@ function registrarProductos() {
         });
     } else {
         metodo = "PUT";
-        urlLocal = url + idClientes;
+        urlLocal = url + idProductos;
         textoimprimir = Swal.fire({
             title: "LISTO",
             text: "Felicidades, Guardado con éxito",
@@ -109,13 +109,13 @@ function registrarProductos() {
                 }).then(function () {
                     // Aquí puedes agregar más acciones después del registro exitoso
                     $('#exampleModal').modal('hide');
-                    listarCliente();
+                    listarProductos();
                 });
             },
             error: function (xhr, status, error) {
                 Swal.fire({
                     title: "Error",
-                    text: "¡El número de documento ya se encuentra registrado!",
+                    text: "¡El producto ya se encuentra registrado!",
                     icon: "error"
                 });
             }
@@ -128,6 +128,167 @@ function registrarProductos() {
         });
     }
 };
+
+function validarCampos() {
+    var nombreProducto = document.getElementById("nombreProducto");
+    return validarnombreproducto(nombreProducto);
+}
+
+// Función para validar el documento de identidad
+function validarnombreproducto(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 5 || valor.length > 20) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+
+function validarCamposdescripcion() {
+    var Descripcion = document.getElementById("Descripcion");
+    return validardescripcion(Descripcion);
+}
+
+function validardescripcion(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 11) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-select is-valid";
+    } else {
+        cuadroNumero.className = "form-select is-invalid";
+    }
+
+    return valido;
+}
+
+// Función nombrecliente
+function validarCamposcantidad() {
+    var Cantidad = document.getElementById("Cantidad");
+    return validarcantidad(Cantidad);
+}
+
+function validarcantidad(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 45) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+// Función apellidocliente
+function validarCamposprecio() {
+    var Precio = document.getElementById("Precio");
+    return validarprecio(Precio);
+}
+
+function validarprecio(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 45) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+// Función Telefono
+function validarCamposiva() {
+    var Iva = document.getElementById("Iva");
+    return validariva(Iva);
+}
+
+function validariva(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 13) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+// Función direccion
+function validarCamposdescuento() {
+    var Descuento = document.getElementById("Descuento");
+    return validardescuento(Descuento);
+}
+
+function validardescuento(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 45) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+// Función Estado
+function validarCamposEstado() {
+    var Estado = document.getElementById("Estado");
+    return validarestado(Estado);
+}
+
+function validarestado(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 2) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-select is-valid";
+    } else {
+        cuadroNumero.className = "form-select is-invalid";
+    }
+
+    return valido;
+}
 
 
 function buscarProductosPorFiltro(filtro) {

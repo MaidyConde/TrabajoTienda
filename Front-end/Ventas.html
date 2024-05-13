@@ -57,7 +57,7 @@
                 <div class="text-end mb-3">
                     <button type="button" class="btn btn-primary me-2">Aplicar filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
-                    <button type="button" class="btn btn-success" onclick="mostrarFormulario()">Registrar Ventas</button>
+                    <button onclick="RegistrarVentaBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Venta</button>
                 </div>
 
                 <!-- Tabla -->
@@ -76,52 +76,82 @@
                     </table>
                 </div>
                 
-                <!-- Formulario de registro de ventas -->
-                <div class="text-center mt-4">
-                    <form id="registroVentaForm">
-                        <h2>Registrar Ventas</h2>
-                        <div class="row">
-                            <div class="col-md-6 offset-md-3">
-                                <div class="mb-3">
-                                    <label for="inputTotalVenta" class="form-label">Total venta:</label>
-                                    <input type="text" class="form-control" id="inputTotalVenta" placeholder="Total Venta">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputFechaVenta" class="form-label">Fecha de la Venta:</label>
-                                    <input type="date" class="form-control" id="inputFechaVenta" placeholder="Fecha Venta"> 
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputEstado" class="form-label">Estado:</label>
-                                    <select class="form-select" id="inputEstado">
-                                        <option value="borrador">BORRADOR</option>
-                                        <option value="cancelada">CANCELADA</option>
-                                        <option value="pendiente pago">PENDIENTE PAGO</option>
-                                        <option value="pagada">PAGADA</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="registrarVentas()">Registrar</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <script>
-        // Función para mostrar el formulario de registro de ventas
-        function mostrarFormulario() {
-            document.getElementById('registroVentaForm').style.display = 'block';
-        }
-
-        // Función para ocultar el formulario de registro de ventas
-        function ocultarFormulario() {
-            document.getElementById('registroVentaForm').style.display = 'none';
-        }
-    </script>
-
+                 <!-- Formulario de registro de producto -->
+                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                 <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Registro Productos</h1>
+                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                         <div class="modal-body">
+                             <div class="container mt-3">
+                                 <form id="miFormulario" class="         ">
+                                     <div class="row">
+                                         <div class="col-md-6 mb-3">
+                                             <label for="nombreProducto">Nombre Producto:</label>
+                                             <input class="form-select form-control" id="nombreProducto"
+                                              name="nombreProducto" onfocusout="validarnombreproducto(this)"
+                                             required>
+                                         </div>
+ 
+                                         <div class="col-md-6 mb-3">
+                                             <label for="Descripcion">Descripción:</label>
+                                             <input type="text" class="form-control" id="Descripcion"
+                                                 name="Descripcion"
+                                                 onfocusout="validardescripcion(this)" required>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="col-md-6 mb-3">
+                                             <label for="Cantidad">Cantidad:</label>
+                                             <input type="number" class="form-control" id="Cantidad"
+                                                 name="Cantidad" onfocusout="validarcantidad(this)" required>
+                                         </div>
+ 
+                                         <div class="col-md-6 mb-3">
+                                             <label for="Precio">Precio:</label>
+                                             <input type="number" class="form-control" id="Precio"
+                                                 name="Precio" onfocusout="validarprecio(this)"
+                                                 required>
+                                         </div>
+                                     </div>
+ 
+                                     <div class="row">
+                                         <div class="col-md-6 mb-3">
+                                             <label for="Iva">Iva:</label>
+                                             <input type="number" class="form-control" id="Iva" name="Iva"
+                                                 onfocusout="validariva(this)" required>
+                                         </div>
+ 
+                                         <div class="col-md-6 mb-3">
+                                             <label for="Descuento">Descuento:</label>
+                                             <input type="text" class="form-control" id="Descuento" name="Descuento"
+                                                 onfocusout="validardescuento(this)" required>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 mb-3">
+                                             <label for="Estado">Estado:</label>
+                                             <select class="form-select " id="Estado" name="estado"
+                                                 onfocusout="validarestado(this)" required>
+                                                 <option value="" selected>Seleccionar...</option>
+                                                 <option  value="A">Activo</option>
+                                                 <option  value="I">Inactivo</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-primary"
+                                             onclick="registrarVentas(); limpiar();">Agregar Venta</button>
+                                     </div>
+                                 </form>
+                             </div>
+                         </div>
+                        
+                     </div>
+                 </div>
+             </div>
     <script src="/Front-end/js/Ventas.js"></script>
 </body>
 

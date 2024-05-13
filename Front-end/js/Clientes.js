@@ -20,6 +20,7 @@ function listarCliente() {
                     <td class="text-center align-middle">${result[i]["telefono"]}</td>
                     <td class="text-center align-middle">${result[i]["direccion"]}</td>
                     <td class="text-center align-middle">${result[i]["ciudad"]}</td>
+                    <td class="text-center align-middle">${result[i]["correo"]}</td>
                     <td class="text-center align-middle">${result[i]["estado"]}</td>
                     <td class="text-center align-middle">
                         <i class="fas fa-edit editar"  onclick="registrarClienteBandera=false;" data-id="${result[i]["idClientes"]}"></i>
@@ -49,6 +50,7 @@ function RegistrarCliente() {
     var Telefono = document.getElementById("Telefono");
     var Direccion = document.getElementById("Direccion");
     var Ciudad = document.getElementById("Ciudad");
+    var Correo = document.getElementById("Correo");
     var Estado = document.getElementById("Estado");
 
     // Verificar si algún campo obligatorio está vacío
@@ -59,6 +61,7 @@ function RegistrarCliente() {
         !validartelefono(Telefono) ||
         !validardireccion(Direccion) ||
         !validarciudad(Ciudad) ||
+        !validarcorreo(Correo) ||
         !validarestado(Estado)) {
         // Mostrar una alerta indicando que todos los campos son obligatorios
         Swal.fire({
@@ -77,6 +80,7 @@ function RegistrarCliente() {
         "Telefono": Telefono.value,
         "Direccion": Direccion.value,
         "Ciudad": Ciudad.value,
+        "Correo": Correo.value,
         "Estado": Estado.value,
     };
 
@@ -295,6 +299,28 @@ function validarciudad(cuadroNumero) {
 
     return valido;
 }
+
+function validarCamposcorreo() {
+    var Correo = document.getElementById("Correo");
+    return validarcorreo(Correo);
+}
+
+function validarcorreo(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 45) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
 // Función Estado
 function validarCamposEstado() {
     var Estado = document.getElementById("Estado");
@@ -340,6 +366,7 @@ function AplicarFiltros(ciudad) {
                         <td class="text-center align-middle">${result[i]["Telefono"]}</td>
                         <td class="text-center align-middle">${result[i]["Direccion"]}</td>
                         <td class="text-center align-middle">${result[i]["Ciudad"]}</td>
+                        <td class="text-center align-middle">${result[i]["Correo"]}</td>
                         <td class="text-center align-middle">${result[i]["Estado"]}</td>
                         <td class="text-center align-middle">
                             <i class="fas fa-edit editar"  onclick="registrarClienteBandera=false;" data-id="${result[i]["idClientes"]}"></i>
@@ -381,6 +408,7 @@ function AplicarFiltros(estado) {
                         <td class="text-center align-middle">${result[i]["telefono"]}</td>
                         <td class="text-center align-middle">${result[i]["direccion"]}</td>
                         <td class="text-center align-middle">${result[i]["ciudad"]}</td>
+                        <td class="text-center align-middle">${result[i]["correo"]}</td>
                         <td class="text-center align-middle">${result[i]["estado"]}</td>
                         <td class="text-center align-middle">
                             <i class="fas fa-edit editar"  onclick="registrarClienteBandera=false;" data-id="${result[i]["idClientes"]}"></i>
@@ -447,6 +475,8 @@ function limpiar() {
     document.getElementById("Direccion").className = "form-control";
     document.getElementById("Ciudad").value = "";
     document.getElementById("Ciudad").className = "form-control";
+    document.getElementById("Correo").value = "";
+    document.getElementById("Correo").className = "form-control";
     document.getElementById("Estado").value = "";
     document.getElementById("Estado").className = "form-control";
 }

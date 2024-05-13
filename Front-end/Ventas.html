@@ -23,7 +23,7 @@
         <div class="menu">
             <img src="/Front-end/img/tacon123.jpeg" alt="" width="70%" style="border-radius: 70%;">
             <ul class="color-blanco">
-                <a href="/Front-end/Inicio.html"><i class="fas fa-bars"></i> Productos</a>
+                <a href="/Front-end/Inicio.html"><i class="fas fa-bars"></i> Dashboard</a>
                 <a href="/Front-end/Cliente.html"><i class="fas fa-users"></i> Clientes</a>
                 <a href="/Front-end/Productos.html"><i class="fas fa-shopping-bag"></i> Productos</a>
                 <a href="/Front-end/Ventas.html"><i class="fas fa-wallet"></i> Ventas</a>
@@ -57,7 +57,7 @@
                 <div class="text-end mb-3">
                     <button type="button" class="btn btn-primary me-2">Aplicar filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
-                    <button onclick="RegistrarVentaBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Venta</button>
+                    <button onclick="RegistrarVentasBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Venta</button>
                 </div>
 
                 <!-- Tabla -->
@@ -88,59 +88,37 @@
                          <div class="modal-body">
                              <div class="container mt-3">
                                  <form id="miFormulario" class="         ">
-                                     <div class="row">
+                                    <div class="row">
                                          <div class="col-md-6 mb-3">
-                                             <label for="nombreProducto">Nombre Producto:</label>
-                                             <input class="form-select form-control" id="nombreProducto"
-                                              name="nombreProducto" onfocusout="validarnombreproducto(this)"
+                                             <label for="clientes">Cliente:</label>
+                                             <input class="form-select form-control" id="clientes"
+                                              name="clientes" onfocusout="validarclientes(this)"
                                              required>
                                          </div>
  
                                          <div class="col-md-6 mb-3">
-                                             <label for="Descripcion">Descripción:</label>
-                                             <input type="text" class="form-control" id="Descripcion"
-                                                 name="Descripcion"
-                                                 onfocusout="validardescripcion(this)" required>
+                                             <label for="Total">Total:</label>
+                                             <input type="text" class="form-control" id="Total"
+                                                 name="Total"
+                                                 onfocusout="validartotal(this)" required>
                                          </div>
                                      </div>
                                      <div class="row">
-                                         <div class="col-md-6 mb-3">
-                                             <label for="Cantidad">Cantidad:</label>
-                                             <input type="number" class="form-control" id="Cantidad"
-                                                 name="Cantidad" onfocusout="validarcantidad(this)" required>
-                                         </div>
- 
-                                         <div class="col-md-6 mb-3">
-                                             <label for="Precio">Precio:</label>
-                                             <input type="number" class="form-control" id="Precio"
-                                                 name="Precio" onfocusout="validarprecio(this)"
-                                                 required>
-                                         </div>
-                                     </div>
- 
-                                     <div class="row">
-                                         <div class="col-md-6 mb-3">
-                                             <label for="Iva">Iva:</label>
-                                             <input type="number" class="form-control" id="Iva" name="Iva"
-                                                 onfocusout="validariva(this)" required>
-                                         </div>
- 
-                                         <div class="col-md-6 mb-3">
-                                             <label for="Descuento">Descuento:</label>
-                                             <input type="text" class="form-control" id="Descuento" name="Descuento"
-                                                 onfocusout="validardescuento(this)" required>
-                                         </div>
-                                     </div>
-                                     <div class="col-md-6 mb-3">
-                                             <label for="Estado">Estado:</label>
-                                             <select class="form-select " id="Estado" name="estado"
-                                                 onfocusout="validarestado(this)" required>
-                                                 <option value="" selected>Seleccionar...</option>
-                                                 <option  value="A">Activo</option>
-                                                 <option  value="I">Inactivo</option>
-                                             </select>
-                                         </div>
-                                     </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="fechaVenta">Fecha de Venta:</label>
+                                            <input type="date" class="form-control" id="fechaVenta" name="fechaVenta" onfocusout="validarfechaventa(this)" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="Estado">Estado:</label>
+                                            <select class="form-select " id="Estado" name="estado" onfocusout="validarestado(this)" required>
+                                                <option value="" selected>Seleccionar...</option>
+                                                <option value="Borrador">BORRADOR</option>
+                                                <option value="Cancelada">CANCELADA</option>
+                                                <option value="Pendiente">PENDIENTE PAGO</option>
+                                                <option value="Pagada">PAGADA</option>
+                                            </select>
+                                        </div>
+                                    </div>                                    
                                      <div class="modal-footer">
                                          <button type="button" class="btn btn-primary"
                                              onclick="registrarVentas(); limpiar();">Agregar Venta</button>

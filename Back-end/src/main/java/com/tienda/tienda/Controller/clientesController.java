@@ -57,6 +57,11 @@ public class clientesController {
         return new ResponseEntity<>("El campo direccion es obligatorio", HttpStatus.BAD_REQUEST); 
     }
 
+    if (Clientes.getCorreo().equals("")) {
+            
+        return new ResponseEntity<>("El campo correo es obligatorio", HttpStatus.BAD_REQUEST); 
+    }
+
     if (Clientes.getEstado().equals("")) {
             
         return new ResponseEntity<>("El campo estado es obligatorio", HttpStatus.BAD_REQUEST); 
@@ -132,6 +137,7 @@ public class clientesController {
             Clientes.setTelefono(ClientesUpdate.getTelefono());
             Clientes.setDireccion(ClientesUpdate.getDireccion());
             Clientes.setCiudad(ClientesUpdate.getCiudad());
+            Clientes.setCorreo(ClientesUpdate.getCorreo());
             Clientes.setEstado(ClientesUpdate.getEstado());
           
             clientesService.save(Clientes);

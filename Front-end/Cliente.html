@@ -27,7 +27,7 @@
         <div class="menu">
             <img src="/Front-end/img/tacon123.jpeg" alt="" width="70%" style="border-radius: 70%;">
             <ul class="color-blanco">
-                <a href="/Front-end/Inicio.html"><i class="fas fa-bars"></i> Productos</a>
+                <a href="/Front-end/Inicio.html"><i class="fas fa-bars"></i> Dashboard</a>
                 <a href="/Front-end/Cliente.html"><i class="fas fa-users"></i> Clientes</a>
                 <a href="/Front-end/Productos.html"><i class="fas fa-shopping-bag"></i> Productos</a>
                 <a href="/Front-end/Ventas.html"><i class="fas fa-wallet"></i> Ventas</a>
@@ -59,29 +59,33 @@
                 
                 <!-- Botones -->
                 <div class="text-end mb-3">
-                    <button class="btn btn-primary mt-2" onclick="AplicarFiltros(document.getElementById('filtroEstado') ('filtroCiudad').value)">Aplicar Filtros</button>
+                    <button class="btn btn-primary mt-2" onclick="AplicarFiltros(document.getElementById('filtroEstado').value)">Aplicar Filtros</button>
                     <button type="button" class="btn btn-secondary me-2">Limpiar filtros</button>
                     <!-- Agregamos un evento onclick para mostrar el formulario al hacer clic -->
                     <button onclick="RegistrarClienteBandera=true; limpiar(); " type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrar Cliente</button>
                 </div>
 
                 <!-- Tabla -->
-                <table class="table table-striped">
-                    <tr>
-                        <th>Id</th>
-                        <th>T.D</th>
-                        <th>Identificación</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
-                        <th>Ciudad</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                    <tbody id="cuerpoTabla"></tbody>
-                </table>
-
+                <div class="table-container">
+                    <div class="table-wrapper">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Id</th>
+                                <th>T.D</th>
+                                <th>Identificación</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Ciudad</th>
+                                <th>Correo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                            <tbody id="cuerpoTabla"></tbody>
+                        </table>
+                    </div>
+                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -148,6 +152,12 @@
                                                 <label for="Ciudad">Ciudad:</label>
                                                 <input type="text" class="form-control" id="Ciudad" name="ciudad"
                                                     onfocusout="validarciudad(this)" required>
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label for="Correo">Correo:</label>
+                                                <input type="text" class="form-control" id="Correo" name="correo"
+                                                    onfocusout="validarcorreo(this)" required>
                                             </div>
     
                                             <div class="col-md-6 mb-3">

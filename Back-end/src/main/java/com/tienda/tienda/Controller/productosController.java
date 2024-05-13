@@ -22,13 +22,13 @@ public class productosController {
     private IproductosService productosService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save (@ModelAttribute("Productos") Productos Productos) {
-
-        if (Productos.getNombreProducto().equals("")) {
-            
-          return new ResponseEntity<>("El campo nombre del producto es obligatorio", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Object> save (@ModelAttribute("Productos") Productos Productos){
+            var listaProductos = productosService.findAll()
+                    .stream().filter(productos -> productos.getNombreProducto()
+                    .equals(Productos.getNombreProducto()));
+            if (listaProductos.count() != 0) {
+        return new ResponseEntity<>("El producto ya existe", HttpStatus.BAD_REQUEST); 
         }
-
         if (Productos.getDescripcion().equals("")) {
             
             return new ResponseEntity<>("El campo descripcion es obligatorio", HttpStatus.BAD_REQUEST);

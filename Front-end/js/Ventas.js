@@ -38,15 +38,15 @@ var registrarVentasBandera = true;
 // Función para registrar un médico
 function registrarVentas() {
     var clientes = document.getElementById("clientes");
-    var total = document.getElementById("total");
+    var Total = document.getElementById("Total");
     var fechaVenta = document.getElementById("fechaVenta");
-    var estado = document.getElementById("estado");
+    var Estado = document.getElementById("Estado");
 
     // Verificar si algún campo obligatorio está vacío
-    if (!validarClientes(clientes) ||
-        !validarTotal(total) ||
-        !validarFechaVenta(fechaVenta) ||
-        !validarEstado(estado)) {
+    if (!validarclientes(clientes) ||
+        !validartotal(Total) ||
+        !validarfechaventa(fechaVenta) ||
+        !validarestado(Estado)) {
         // Mostrar una alerta indicando que todos los campos son obligatorios
         Swal.fire({
             title: "¡Error!",
@@ -58,9 +58,9 @@ function registrarVentas() {
 
     var forData = {
         "clientes": clientes.value,
-        "total": total.value,
-        "fechaVenta": Cantidad.value,
-        "Estado": estado.value,
+        "Total": Total.value,
+        "fechaVenta": fechaVenta.value,
+        "Estado": Estado.value,
     };
 
     var metodo = "";
@@ -116,6 +116,100 @@ function registrarVentas() {
         });
     }
 };
+
+function validarCampos() {
+    clientes = document.getElementById("clientes");
+    return validarclientes(clientes);
+}
+
+// Función para validar el cliente
+function validarclientes(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 5 || valor.length > 155) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+
+function validarCampostotal() {
+    var Total = document.getElementById("Total");
+    return validartotal(Total);
+}
+
+function validartotal(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 11) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-select is-valid";
+    } else {
+        cuadroNumero.className = "form-select is-invalid";
+    }
+
+    return valido;
+}
+
+// Función fecha validar
+function validarCamposfechaventa() {
+    var fechaVenta = document.getElementById("fechaVenta");
+    return validarfechaventa(fechaVenta);
+}
+
+function validarfechaventa(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 45) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
+    }
+
+    return valido;
+}
+
+// Función Estado
+function validarCamposEstado() {
+    var Estado = document.getElementById("Estado");
+    return validarestado(Estado);
+}
+
+function validarestado(cuadroNumero) {
+    var valor = cuadroNumero.value;
+    var valido = true;
+
+    if (valor.length < 1 || valor.length > 20) {
+        valido = false;
+    }
+
+    if (valido) {
+        cuadroNumero.className = "form-select is-valid";
+    } else {
+        cuadroNumero.className = "form-select is-invalid";
+    }
+
+    return valido;
+}
+
+
 
 
 function buscarVentasPorFiltro(filtro) {

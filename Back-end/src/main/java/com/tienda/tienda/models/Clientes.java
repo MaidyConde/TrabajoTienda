@@ -34,6 +34,9 @@ public class Clientes {
     @Column(name = "Ciudad", nullable = false, length = 45)
     private String Ciudad;
 
+    @Column(name = "Correo", nullable = false, length = 100)
+    private String Correo;
+
     @Column(name = "Estado", nullable = false, length = 1) 
     private String Estado;
 
@@ -41,7 +44,7 @@ public class Clientes {
     }
 
     public Clientes(String idClientes, String tipoIdentificacion, String identificacion, String nombreCliente,
-            String apellidoCliente, String telefono, String direccion, String ciudad, String estado) {
+            String apellidoCliente, String telefono, String direccion, String ciudad, String correo, String estado) {
         this.idClientes = idClientes;
         this.tipoIdentificacion = tipoIdentificacion;
         Identificacion = identificacion;
@@ -50,6 +53,7 @@ public class Clientes {
         Telefono = telefono;
         Direccion = direccion;
         Ciudad = ciudad;
+        Correo = correo;
         Estado = estado;
     }
 
@@ -117,6 +121,14 @@ public class Clientes {
         Ciudad = ciudad;
     }
 
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String correo) {
+        Correo = correo;
+    }
+
     public String getEstado() {
         return Estado;
     }
@@ -124,4 +136,6 @@ public class Clientes {
     public void setEstado(String estado) {
         Estado = estado;
     }
+
+    
 }

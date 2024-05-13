@@ -48,10 +48,17 @@
 }
 
 /* Estilo para la tabla */
-.table-container {
+/* .table-container {
+    margin:auto;
+    max-width: 80%;
+} */
+
+.table-wrapper {
     margin: 0 auto; /* Centrar la tabla horizontalmente */
-    width: 100%; /* Ancho de la tabla */
+    max-width: 65%; 
+    position: absolute; left: 50%; transform: translate(-50%); /* Ancho máximo de la tabla para que no ocupe toda la pantalla */
 }
+
 
 
 body {
@@ -114,4 +121,8 @@ body {
 /* Estilos para el placeholder de los inputs */
 .filter-container input::placeholder {
     color: #999; /* Color del placeholder */
+}
+
+.custom-table {
+    margin-left: 0;
 }
